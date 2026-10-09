@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0c1b35">
+<title>Fareed Music Official | Artist Dashboard</title>
+<style>
+:root{--navy:#0c1b35;--blue:#1769ff;--sky:#eaf2ff;--ink:#17233b;--muted:#64748b;--line:#e4eaf3;--bg:#f5f8fc;--green:#0f9f75}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+header{background:#fff;border-bottom:1px solid var(--line);padding:14px 5%;display:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:0;z-index:3}
+.brand{display:flex;align-items:center;gap:10px;font-weight:850;font-size:17px}.logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,#1675ff,#0d2e68);display:grid;place-items:center;color:white;font-size:22px}
+header small{display:block;color:var(--muted);font-size:11px;font-weight:500}.topbtn,.btn{border:0;border-radius:12px;padding:11px 15px;background:var(--blue);color:white;font-weight:750;cursor:pointer}.topbtn.secondary,.btn.secondary{background:#edf3ff;color:#1757c2}
+.layout{display:grid;grid-template-columns:230px 1fr;min-height:calc(100vh - 70px)}aside{background:var(--navy);color:#e7efff;padding:22px 14px}.sidebrand{font-weight:800;margin:0 8px 20px}.nav{display:grid;gap:6px}.nav button{border:0;text-align:left;padding:12px;border-radius:10px;color:#dce8ff;background:transparent;font-size:14px;cursor:pointer}.nav button.active,.nav button:hover{background:#1a3764;color:white}.aside-note{font-size:12px;line-height:1.5;color:#b7c7e5;border:1px solid #365078;border-radius:12px;padding:12px;margin-top:24px}
+main{padding:26px;max-width:1250px;width:100%;margin:auto}.welcome{display:flex;justify-content:space-between;gap:14px;align-items:center;flex-wrap:wrap}.welcome h1{font-size:26px;margin:0 0 6px}.muted{color:var(--muted)}.tiny{font-size:12px}.hero{background:linear-gradient(120deg,#10284d,#1769ff);color:white;padding:24px;border-radius:20px;margin:22px 0;display:flex;justify-content:space-between;align-items:center;gap:20px}.hero h2{margin:0 0 8px;font-size:24px}.hero p{margin:0;color:#e0eaff;max-width:620px;line-height:1.5}.hero .musicicon{font-size:58px;opacity:.95}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.stat,.panel{background:white;border:1px solid var(--line);border-radius:16px;padding:18px}.stat strong{display:block;font-size:25px;margin-top:8px}.stat .emoji{font-size:22px}.section{display:none}.section.active{display:block}.contentgrid{display:grid;grid-template-columns:1.5fr 1fr;gap:16px;margin-top:18px}.panel h3{margin:0 0 14px;font-size:17px}.field{display:grid;gap:6px;margin-bottom:13px}.field label{font-size:13px;font-weight:750}.field input,.field select,.field textarea{width:100%;padding:12px;border:1px solid #d6dfec;border-radius:10px;background:white;font:inherit;color:var(--ink)}.field textarea{min-height:76px;resize:vertical}.formrow{display:grid;grid-template-columns:1fr 1fr;gap:12px}.uploadbox{border:1.5px dashed #9fb8e3;border-radius:12px;padding:13px;background:#f8fbff}.uploadbox input{font-size:12px;padding:0;border:0}.notice{background:#fff7e6;border:1px solid #f5d79a;color:#77520b;border-radius:12px;padding:12px;font-size:13px;line-height:1.5;margin:14px 0}.success{color:var(--green);font-weight:700;font-size:13px;margin-top:10px}.list{display:grid;gap:10px}.songrow{border:1px solid var(--line);padding:12px;border-radius:12px;display:flex;justify-content:space-between;align-items:center;gap:10px}.pill{font-size:11px;border-radius:999px;padding:5px 9px;background:#fff0ce;color:#875500;white-space:nowrap}.pill.live{background:#dff8ee;color:#087654}.quick{display:grid;gap:10px}.quick button{border:1px solid var(--line);border-radius:10px;background:#fff;text-align:left;padding:12px;cursor:pointer;color:var(--ink)}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:22px}
+@media(max-width:760px){.layout{grid-template-columns:1fr}aside{padding:10px;overflow:auto}.sidebrand{display:none}.nav{display:flex;min-width:max-content}.nav button{font-size:12px;padding:10px}main{padding:16px}.stats{grid-template-columns:1fr 1fr}.contentgrid{grid-template-columns:1fr}.hero h2{font-size:21px}.hero .musicicon{font-size:38px}.formrow{grid-template-columns:1fr}header{padding:12px 4%}.brand{font-size:14px}.topbtn{padding:9px 11px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="brand"><div class="logo">♫</div><div>Fareed Music Official<small>Artist & Release Dashboard</small></div></div>
+ <button class="topbtn secondary" onclick="showSection('upload')">＋ Upload Song</button>
+</header>
+<div class="layout">
+<aside>
+ <div class="sidebrand">YOUR MUSIC WORKSPACE</div>
+ <nav class="nav">
+  <button class="active" data-section="dashboard" onclick="showSection('dashboard')">⌂ Dashboard</button>
+  <button data-section="upload" onclick="showSection('upload')">♫ Upload Song</button>
+  <button data-section="songs" onclick="showSection('songs')">▤ My Songs</button>
+  <button data-section="artists" onclick="showSection('artists')">♙ Artist Details</button>
+  <button data-section="releases" onclick="showSection('releases')">◷ Release Management</button>
+  <button data-section="help" onclick="showSection('help')">ⓘ Help & Next Steps</button>
+ </nav>
+ <div class="aside-note"><b>Important</b><br>This starter dashboard organizes your release information. It does not yet deliver songs to streaming platforms.</div>
+</aside>
+<main>
+<section id="dashboard" class="section active">
+ <div class="welcome"><div><h1>Namaste, Fareed Music Official 👋</h1><div class="muted">Apne music releases ki jaankari ek jagah sambhalein.</div></div><span class="pill">Starter Version</span></div>
+ <div class="hero"><div><h2>Apna music career aage badhayein</h2><p>Song details, cover artwork aur release status ko ek simple mobile-friendly dashboard mein organize karein.</p><br><button class="topbtn" onclick="showSection('upload')">Start Song Entry →</button></div><div class="musicicon">🎧</div></div>
+ <div class="stats">
+  <div class="stat"><span class="emoji">♫</span><div class="muted tiny">Songs added on this device</div><strong id="songCount">0</strong></div>
+  <div class="stat"><span class="emoji">◷</span><div class="muted tiny">Awaiting review</div><strong id="pendingCount">0</strong></div>
+  <div class="stat"><span class="emoji">✓</span><div class="muted tiny">Marked as released</div><strong id="releasedCount">0</strong></div>
+ </div>
+ <div class="contentgrid">
+  <div class="panel"><h3>Recent Song Entries</h3><div id="recentList" class="list"><div class="muted">Abhi koi song entry nahi hai. “Upload Song” se shuru karein.</div></div></div>
+  <div class="panel"><h3>Quick Links</h3><div class="quick"><button onclick="showSection('upload')">＋ New Song Entry</button><button onclick="showSection('artists')">♙ Artist Details</button><button onclick="showSection('releases')">◷ Update Release Status</button><button onclick="showSection('help')">ⓘ Distribution Help</button></div></div>
+ </div>
+</section>
+<section id="upload" class="section">
+ <div class="welcome"><div><h1>Upload / Add Song</h1><div class="muted">Release metadata aur artwork details bharein.</div></div></div>
+ <div class="notice"><b>Starter version:</b> Entries is browser/device par save hoti hain. Is page par secure online accounts ya cloud audio storage abhi connected nahi hain. Badi audio file ko GitHub repository mein upload na karein.</div>
+ <form id="songForm" class="panel">
+  <div class="formrow">
+   <div class="field"><label for="title">Song Title *</label><input id="title" required placeholder="Jaise: Sahun Sarpanch"></div>
+   <div class="field"><label for="artist">Artist / Singer *</label><input id="artist" required placeholder="Singer ka naam"></div>
+  </div>
+  <div class="formrow">
+   <div class="field"><label for="language">Language</label><select id="language"><option>Haryanvi</option><option>Mewati</option><option>Hindi</option><option>Punjabi</option><option>Other</option></select></div>
+   <div class="field"><label for="genre">Genre</label><select id="genre"><option>Regional</option><option>Pop</option><option>Folk</option><option>Romantic</option><option>Sad</option><option>DJ</option><option>Other</option></select></div>
+  </div>
+  <div class="formrow">
+   <div class="field"><label for="lyricist">Lyricist</label><input id="lyricist" placeholder="Lyrics writer"></div>
+   <div class="field"><label for="producer">Producer / Music Director</label><input id="producer" placeholder="Producer or music director"></div>
+  </div>
+  <div class="formrow">
+   <div class="field uploadbox"><label for="audioName">Audio file name (record only)</label><input id="audioName" type="text" placeholder="e.g. song-final.mp3"><small class="muted">Actual audio upload/storage is not connected yet.</small></div>
+   <div class="field uploadbox"><label for="coverName">Cover artwork file name (record only)</label><input id="coverName" type="text" placeholder="e.g. cover-3000.jpg"><small class="muted">Actual artwork upload/storage is not connected yet.</small></div>
+  </div>
+  <div class="field"><label for="notes">Notes / ISRC / Release date (optional)</label><textarea id="notes" placeholder="Any extra release information"></textarea></div>
+  <button class="btn" type="submit">Save Song Entry</button><div id="formMessage" aria-live="polite"></div>
+ </form>
+</section>
+<section id="songs" class="section"><h1>My Songs</h1><p class="muted">Is browser par save ki gayi song entries.</p><div class="panel"><div id="allSongs" class="list">Abhi koi song entry nahi hai.</div></div></section>
+<section id="artists" class="section"><h1>Artist Details</h1><div class="panel"><h3>Label / Artist Profile</h3><div class="field"><label>Label Name</label><input value="Fareed Music Official" readonly></div><div class="field"><label>Owner / Admin display name</label><input value="Fareed Music Official" readonly></div><p class="muted tiny">Public website ke liye contact details aur artist profiles baad mein securely configure karein.</p></div></section>
+<section id="releases" class="section"><h1>Release Management</h1><p class="muted">Yahan har entry ka status track karein. Status badalna distributor ko song bhejne ke barabar nahi hai.</p><div id="releaseList" class="panel list">Abhi koi release entry nahi hai.</div></section>
+<section id="help" class="section"><h1>Help & Next Steps</h1><div class="panel"><h3>Streaming platforms par release kaise hoga?</h3><ol><li>Song ke rights, credits, audio aur cover ko verify karein.</li><li>Authorized music distributor ya label partner se account/permission lein.</li><li>Unke portal/API ke through release submit karein.</li><li>Unki review aur delivery confirmation ke baad hi “Released” mark karein.</li></ol><div class="notice">GitHub Pages static hosting hai: isse design publish ho sakta hai, lekin secure login, private cloud uploads, payment processing aur distributor delivery apne aap nahi milte.</div></div></section>
+<footer>© <span id="year"></span> Fareed Music Official · Starter dashboard</footer>
+</main>
+</div>
+<script>
+const KEY='fmo_song_entries_v1';
+let songs=[];
+try{songs=JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){songs=[]}
+function showSection(id){document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id===id));document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.section===id));window.scrollTo({top:0,behavior:'smooth'});render()}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(songs))}catch(e){}}
+function safe(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function statusPill(s){return s==='Released'?'<span class="pill live">Released (manual)</span>':'<span class="pill">Pending</span>'}
+function row(s){return `<div class="songrow"><div><b>${safe(s.title)}</b><div class="muted tiny">${safe(s.artist)} · ${safe(s.language)}</div></div>${statusPill(s.status)}</div>`}
+function render(){document.getElementById('songCount').textContent=songs.length;document.getElementById('pendingCount').textContent=songs.filter(s=>s.status!=='Released').length;document.getElementById('releasedCount').textContent=songs.filter(s=>s.status==='Released').length;document.getElementById('recentList').innerHTML=songs.length?s.slice(-4).reverse().map(row).join(''):'<div class="muted">Abhi koi song entry nahi hai. “Upload Song” se shuru karein.</div>';document.getElementById('allSongs').innerHTML=songs.length?s.slice().reverse().map(s=>`<div class="songrow"><div><b>${safe(s.title)}</b><div class="muted tiny">${safe(s.artist)} · ${safe(s.language)} · ${safe(s.genre)}</div></div><button class="btn secondary" onclick="toggleStatus('${s.id}')">${s.status==='Released'?'Mark Pending':'Mark Released'}</button></div>`).join(''):'Abhi koi song entry nahi hai.';document.getElementById('releaseList').innerHTML=songs.length?s.slice().reverse().map(s=>`<div class="songrow"><div><b>${safe(s.title)}</b><div class="muted tiny">${safe(s.artist)}</div></div><div>${statusPill(s.status)}<br><button class="btn secondary" style="margin-top:7px" onclick="toggleStatus('${s.id}')">Change status</button></div></div>`).join(''):'Abhi koi release entry nahi hai.'}
+function toggleStatus(id){const s=songs.find(x=>x.id===id);if(s){s.status=s.status==='Released'?'Pending':'Released';save();render()}}
+document.getElementById('songForm').addEventListener('submit',e=>{e.preventDefault();const s={id:String(Date.now()),title:document.getElementById('title').value.trim(),artist:document.getElementById('artist').value.trim(),language:document.getElementById('language').value,genre:document.getElementById('genre').value,lyricist:document.getElementById('lyricist').value.trim(),producer:document.getElementById('producer').value.trim(),audioName:document.getElementById('audioName').value.trim(),coverName:document.getElementById('coverName').value.trim(),notes:document.getElementById('notes').value.trim(),status:'Pending'};songs.push(s);save();render();e.target.reset();document.getElementById('formMessage').innerHTML='<div class="success">Song entry save ho gayi (is device/browser par).</div>';});
+document.getElementById('year').textContent=new Date().getFullYear();render();
+</script>
+</body>
+</html>
